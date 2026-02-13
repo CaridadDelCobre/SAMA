@@ -1,3 +1,9 @@
+import sys
+import os
+
+sys.path.append(os.path.abspath("."))
+
+
 import json
 from mesh_semantic.embedding.model import load_model
 from mesh_semantic.embedding.encode import embed
