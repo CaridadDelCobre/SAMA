@@ -1,6 +1,7 @@
 from mesh_semantic.text.normalize import normalize_text
 from mesh_semantic.text.chunk import chunk_text
 from mesh_semantic.embedding.encode import embed
+from mesh_semantic.mesh.project import project_to_mesh
 
 def process_source(text, tokenizer, model, mesh_index, mesh_meta, config):
   text = normalize_text(text)
