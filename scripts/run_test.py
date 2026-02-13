@@ -15,7 +15,7 @@ import config.settings as config
 tokenizer, model = load_model(config.MODEL_NAME)
 
 # Load MeSH
-with open("scripts/test_mesh.json") as f:
+with open("data/mesh/descriptors.json") as f:
   mesh_records = json.load(f)
 
 # Build MeSH index
