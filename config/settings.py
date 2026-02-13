@@ -5,7 +5,7 @@ CHUNK_SIZE = 400
 CHUNK_OVERLAP = 50 #Overlap token range to help with context flow
 
 TOP_K_MESH = 15 # Number of MeSH terms assigned
-MIN_SIMILARITY = 0.35 # Minimum cosine similarity for assignment
+MIN_SIMILARITY = 0.85 # Minimum cosine similarity for assignment
 
 EXCLUDED_MESH_TERMS = {
   "Humans", "Animals", "Male", "Female"
