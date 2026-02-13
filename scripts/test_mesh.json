@@ -1,0 +1,17 @@
+[
+  {
+    "id": "D1",
+    "naem": "Obesity",
+    "scope": "A condition characterized by excessive body fat."
+  },
+  {
+    "id":"D2",
+    "name": Diabetes Mellitus, Type 2",
+    "scope": "A metabolic disorder characterized by insulin resistance."
+  },
+  {
+    "id": "D3",
+    "name": "Physical Activity",
+    "scope": "Bodily movement produced by skeletal muscles."
+  }
+]
