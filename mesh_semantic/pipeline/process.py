@@ -14,7 +14,7 @@ def process_source(text, tokenizer, model, mesh_index, mesh_meta, config):
   embeddings = [embed(c, tokenizer, model) for c in chunks]
   source_embedding = sum(embeddings) / len(embeddings)
 
-  mesh_hits = projects+to_mesh(
+  mesh_hits = projects_to_mesh(
     source_embedding,
     mesh_index,
     mesh_meta,
