@@ -22,4 +22,4 @@ def process_source(text, tokenizer, model, mesh_index, mesh_meta, config):
     config.MIN_SIMILARITY
   )
 
-return source_embedding, mesh_hits
+  return source_embedding, mesh_hits
