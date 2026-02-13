@@ -28,7 +28,7 @@ embedding, mesh_hits = process_source(
   profile_text,
   tokenizer,
   model,
-  mesh_index
+  mesh_index,
   mesh_meta,
   config
 )
