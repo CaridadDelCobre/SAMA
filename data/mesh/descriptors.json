@@ -1,0 +1,22 @@
+[
+  {"id": "D000001", "name": "Obesity", "scope": "A condition characterized by excessive body fat."},
+  {"id": "D000002", "name": "Diabetes Mellitus, Type 2", "scope": "A metabolic disorder characterized by insulin resistance."},
+  {"id": "D000003", "name": "Physical Activity", "scope": "Bodily movement produced by skeletal muscles."},
+  {"id": "D000004", "name": "Hypertension", "scope": "High blood pressure."},
+  {"id": "D000005", "name": "Cancer", "scope": "A group of diseases involving abnormal cell growth."},
+  {"id": "D000006", "name": "Cardiovascular Diseases", "scope": "Diseases of the heart and blood vessels."},
+  {"id": "D000007", "name": "Mental Health", "scope": "Emotional, psychological, and social well-being."},
+  {"id": "D000008", "name": "Nutrition", "scope": "The intake of food and its effects on health."},
+  {"id": "D000009", "name": "Genomics", "scope": "The study of genomes of organisms."},
+  {"id": "D000010", "name": "Proteomics", "scope": "The study of the proteome of organisms."},
+  {"id": "D000011", "name": "Immunology", "scope": "Study of the immune system."},
+  {"id": "D000012", "name": "Neuroscience", "scope": "Study of the nervous system."},
+  {"id": "D000013", "name": "Epidemiology", "scope": "Study of the distribution and determinants of health and diseases."},
+  {"id": "D000014", "name": "Bioinformatics", "scope": "Application of computational tools to biological data."},
+  {"id": "D000015", "name": "Stem Cells", "scope": "Undifferentiated cells capable of giving rise to multiple cell types."},
+  {"id": "D000016", "name": "Vaccination", "scope": "Administration of a vaccine to stimulate immunity."},
+  {"id": "D000017", "name": "Antibiotics", "scope": "Drugs used to treat bacterial infections."},
+  {"id": "D000018", "name": "Clinical Trials", "scope": "Research studies to evaluate medical interventions."},
+  {"id": "D000019", "name": "Public Health", "scope": "Science and practice of protecting and improving community health."},
+  {"id": "D000020", "name": "Environmental Health", "scope": "Study of environmental factors affecting health."}
+]
