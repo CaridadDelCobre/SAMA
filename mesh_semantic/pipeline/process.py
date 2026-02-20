@@ -12,8 +12,11 @@ def process_source(text, tokenizer, model, mesh_index, mesh_meta, config):
     config.CHUNK_OVERLAP
   )
 
-  embeddings = [embed(c, tokenizer, model) for c in chunks]
-  source_embedding = sum(embeddings) / len(embeddings)
+  chunk_embeddings = [embed(c, tokenizer, model) for c in chunks]
+  chunk_weights = [len(tokenizer.tokenize(c)) for c in chunks]
+
+  total_weight = sum(chunk_weights)
+  source_embedding = sum(w * e for w, e in zip(chunk_weights, chunk_embeddings)) / total_weight
 
   mesh_hits = project_to_mesh(
     source_embedding,
