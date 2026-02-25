@@ -115,8 +115,8 @@ def parse_descriptor(record: ET.Element) -> dict | None:
   ]
 
 # Conditional that there are no matches in predefined list
-if not is_included(tree_numbers):
-  return None 
+  if not is_included(tree_numbers):
+    return None 
 
 scope = ""
 for concept in record.findall("ConceptList/Concept"):
