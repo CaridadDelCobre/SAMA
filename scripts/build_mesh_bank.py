@@ -212,7 +212,7 @@ def main():
     required=True,
     help="Path to NLM MeSH descriptor XML file (e.g. desc2025.xml)"
   )
-  parser.add argument(
+  parser.add_argument(
     "--output",
     default="data/mesh/descriptors.json",
     help="Output path for descriptors JSON (default: data/mesh/descriptors.json)"
