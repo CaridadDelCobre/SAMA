@@ -118,30 +118,31 @@ def parse_descriptor(record: ET.Element) -> dict | None:
   if not is_included(tree_numbers):
     return None 
 
-scope = ""
-for concept in record.findall("ConceptList/Concept"):
-  if concept.attrib.get("PreferredConceptYN") == "Y":
-    scope_el = concept.find("ScopeNote")
-    if scope_el is not None and scope_el.text:
-      scope = scope_el.text.strip()
-    break
-
-entry_terms = []
-seen = {name.lower()} # avoid duplicating the preferred name
-for term in record.findall("ConceptList/Concept/TermList/Term"):
-  if term.attrib.get("ConceptPreferredTermYN") == "N":
-    s = term.findtext("String", default="").strip()
-    if s and s.lower() not in seen:
-      entry_terms.append(s)
-      seen.add(s.lower())
-    if len(entry_terms) >= max_entry_terms:
+  scope = ""
+  for concept in record.findall("ConceptList/Concept"):
+    if concept.attrib.get("PreferredConceptYN") == "Y":
+      scope_el = concept.find("ScopeNote")
+      if scope_el is not None and scope_el.text:
+        scope = scope_el.text.strip()
       break
+
+  entry_terms = []
+  seen = {name.lower()} # avoid duplicating the preferred name
+  for term in record.findall("ConceptList/Concept/TermList/Term"):
+    if term.attrib.get("ConceptPreferredTermYN") == "N":
+      s = term.findtext("String", default="").strip()
+      if s and s.lower() not in seen:
+        entry_terms.append(s)
+        seen.add(s.lower())
+      if len(entry_terms) >= max_entry_terms:
+        break
+
   return {
-    "id": uid,
-    "name": name,
-    "scope": scope,
-    "tree_numbers": tree_numbers,
-    "entry_terms": entry_terms,
+      "id": uid,
+      "name": name,
+      "scope": scope,
+      "tree_numbers": tree_numbers,
+      "entry_terms": entry_terms,
   }
 
 # parse the full NLM MeSH descriptor XML and return filtered descriptors
