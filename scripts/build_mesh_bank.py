@@ -136,12 +136,12 @@ for term in record.findall("ConceptList/Concept/TermList/Term"):
       seen.add(s.lower())
     if len(entry_terms) >= max_entry_terms:
       break
-return {
-  "id": uid,
-  "name": name,
-  "scope": scope,
-  "tree_numbers": tree_numbers,
-  "entry_terms": entry_terms,
+  return {
+    "id": uid,
+    "name": name,
+    "scope": scope,
+    "tree_numbers": tree_numbers,
+    "entry_terms": entry_terms,
   }
 
 # parse the full NLM MeSH descriptor XML and return filtered descriptors
