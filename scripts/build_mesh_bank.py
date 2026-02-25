@@ -129,6 +129,106 @@ for concept in record.findall("ConceptList/Concept"):
 entry_terms = []
 seen = {name.lower()} # avoid duplicating the preferred name
   for term in record.findall("ConceptList/Concept/TermList/Term"):
-    if term.attrib
+    if term.attrib.get("ConceptPreferredTermYN") == "N":
+      s = term.findtext("String", default="").strip()
+      if s and s.lower() not in seen:
+        entry_terms.append(s)
+        seen.add(s.lower())
+      if len(entry_terms) >= max_entry_terms:
+        break
+  return {
+    "id": uid,
+    "name": name,
+    "scope": scope,
+    "tree_numbers": tree_numbers,
+    "entry_terms": entry_terms,
+  }
+
+# parse the full NLM MeSH descriptor XML and return filtered descriptors
+def parse_mesh_xml(xml_path: str) -> list[dict]:
+  log.info(f"Parsing MeSH XML from: {xml_path}")
+  tree = ET.parse(xml_path)
+  root = tree.getroot()
+
+  records = root.findall("DescriptorRecord")
+  log.info(f"Total descriptor records found: {len(records)}")
+
+  descriptors = []
+  skipped = 0
+  for record in records:
+    parsed = parse_descriptor(record)
+    if parsed:
+      descriptors.append(parsed)
+    else:
+      skipped += 1
+
+  log.info(f"Descriptors included: {len(descriptors)}")
+  log.info(f"Descriptors skipped: {skipped}")
+  return descriptors
+
+# ---
+# Output
+# ---
+
+def write_output(descriptors: list[dict], output_path: str) -> None:
+  out = Path(output_path)
+  out.parent.mkdir(parents=True, exist_ok=True)
+  with open(out, "w", encoding="utf-8") as f:
+    json.dump(descriptors, f, indent=2, ensure_ascii=False)
+  log.info(f"Wrote {len(descriptors)} descriptors to {output_path}")
+
+# ---
+# Summary Report
+# ---
+
+# Print a breakdown of included descriptors by top-level branch
+def print_summary(descriptors: list[dict]) -> None:
+  from collections import Counter
+  branch_counts = Counter()
+  for d in descriptors:
+    for tn in d["tree_numbers"]:
+      branch_counts[tn[0]] += 1
+      break
+
+  print("\n--- Branch Summary ---")
+  for branch in sorted(branch_counts):
+    print(f" {branch}: {branch_counts[branch]} descriptors")
+  print(f" TOTAL: {len(descriptors)} descriptors")
+
+  no_scope = sum(1 for d in descriptors if not d["scope"])
+  no_entry = sum(1 for d in descriptors if not d["entry_terms"])
+  print(f"\n Descriptors with no scope note: {no_scope}")
+  print(f" Descriptors with no entry terms: {no_entry}")
+  print()
+
+# ---
+# Command Line Interface
+# ---
+
+def main():
+  parser = argparse.ArgumentParser(description="Build SAMA MeSH descriptor bank from NLM XML.")
+  parser.add_argument(
+    "--xml",
+    required=True,
+    help="Path to NLM MeSH descriptor XML file (e.g. desc2025.xml)"
+  )
+  parser.add argument(
+    "--output",
+    default="data/mesh/descriptors.json",
+    help="Output path for descriptors JSON (default: data/mesh/descriptors.json)"
+  )
+  args = parser.parse_args()
+
+  descriptors = parse_mesh_xml(args.xml)
+  print_summary(descriptors)
+  write_output(descriptors, args.output)
+
+if __name__ = "__main__":
+  main()
+
+
+  
+  
+  
 
 
