@@ -223,7 +223,7 @@ def main():
   print_summary(descriptors)
   write_output(descriptors, args.output)
 
-if __name__ = "__main__":
+if __name__ == "__main__":
   main()
 
 
