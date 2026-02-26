@@ -24,7 +24,6 @@ log = logging.getLogger(__name__)
 # ---
 
 # A  Anatomy
-# B  Organisms (Exclusion Candidate)
 # C  Diseases
 # D  Chemicals and Drugs
 # E  Analytical, Diagnostic and Therapeutic Techniques and Equipment
@@ -35,6 +34,7 @@ log = logging.getLogger(__name__)
 # M  Named Groups
 #
 # Excluded by default:
+# B  Organisms (Exclusion Candidate)
 # H Disciplines and Occupations (Reinclusion Candidate)
 # I Anthropology, Education, Sociology
 # K Humanities
@@ -43,7 +43,6 @@ log = logging.getLogger(__name__)
 
 included_branches = {
     "A",
-    "B",
     "C",
     "D",
     "E",
