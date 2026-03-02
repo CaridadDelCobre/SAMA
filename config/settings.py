@@ -4,7 +4,7 @@ MAX_TOKENS = 512 #fundamental unit of text is 1 token (~4 characters)
 CHUNK_SIZE = 400 
 CHUNK_OVERLAP = 50 #Overlap token range to help with context flow
 
-TOP_K_MESH = 30 # Number of MeSH terms assigned
+TOP_K_MESH = 100 # Number of MeSH terms assigned
 MIN_SIMILARITY = 0.70 # Minimum cosine similarity for assignment
 
 EXCLUDED_MESH_TERMS = {
